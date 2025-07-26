@@ -1,38 +1,46 @@
+// Theme toggle functionality
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-
-// Theme toggle functionality
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
         themeToggle.textContent = '🌙';
-        document.documentElement.style.setProperty('--primary-color', '#e2552d');
-        document.documentElement.style.setProperty('--text-color', '#f1f1f1');
-        document.documentElement.style.setProperty('--bg-color', '#0d2646');
-        document.documentElement.style.setProperty('--nav-bg', '#1a1a1a');
-        document.documentElement.style.setProperty('--border-color', '#444');
+        document.documentElement.style.setProperty('--primary-color', '#3b82f6');
+        document.documentElement.style.setProperty('--text-color', '#f8fafc');
+        document.documentElement.style.setProperty('--bg-color', '#0f172a');
+        document.documentElement.style.setProperty('--nav-bg', '#1e293b');
+        document.documentElement.style.setProperty('--border-color', '#334155');
     } else {
         localStorage.setItem('theme', 'light');
         themeToggle.textContent = '☀️';
-        document.documentElement.style.setProperty('--primary-color', '#e2552d');
-        document.documentElement.style.setProperty('--text-color', '#333');
-        document.documentElement.style.setProperty('--bg-color', '#fff');
-        document.documentElement.style.setProperty('--nav-bg', '#f1f1f1');
-        document.documentElement.style.setProperty('--border-color', '#ddd');
+        document.documentElement.style.setProperty('--primary-color', '#3b82f6');
+        document.documentElement.style.setProperty('--text-color', '#1e293b');
+        document.documentElement.style.setProperty('--bg-color', '#f8fafc');
+        document.documentElement.style.setProperty('--nav-bg', '#ffffff');
+        document.documentElement.style.setProperty('--border-color', '#e2e8f0');
     }
 });
 
-// Check for saved theme preference
+// Apply saved theme
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
     themeToggle.textContent = '🌙';
-    document.documentElement.style.setProperty('--primary-color', '#e2552d');
-    document.documentElement.style.setProperty('--text-color', '#f1f1f1');
-    document.documentElement.style.setProperty('--bg-color', '#0d2646');
-    document.documentElement.style.setProperty('--nav-bg', '#1a1a1a');
-    document.documentElement.style.setProperty('--border-color', '#444');
+    document.documentElement.style.setProperty('--primary-color', '#3b82f6');
+    document.documentElement.style.setProperty('--text-color', '#f8fafc');
+    document.documentElement.style.setProperty('--bg-color', '#0f172a');
+    document.documentElement.style.setProperty('--nav-bg', '#1e293b');
+    document.documentElement.style.setProperty('--border-color', '#334155');
+} else {
+    body.classList.remove('dark-mode');
+    themeToggle.textContent = '☀️';
+    document.documentElement.style.setProperty('--primary-color', '#3b82f6');
+    document.documentElement.style.setProperty('--text-color', '#1e293b');
+    document.documentElement.style.setProperty('--bg-color', '#f8fafc');
+    document.documentElement.style.setProperty('--nav-bg', '#ffffff');
+    document.documentElement.style.setProperty('--border-color', '#e2e8f0');
 }
+
 
 // Function to load pages dynamically
 function loadPage(pageId) {
@@ -79,7 +87,7 @@ function loadPage(pageId) {
 }
 
 // Load saved page or default to page1
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const savedPage = localStorage.getItem('currentPage') || 'page1';
     loadPage(savedPage);
 });
